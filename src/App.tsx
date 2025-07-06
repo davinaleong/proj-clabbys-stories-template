@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react"
-import { states } from "./data/states"
 import type { StateKey, PageName } from "./data/states"
-// import FloatingNavigator from "./components/FloatingNavigator/FloatingNavigator"
-import StateInspector from "./components/StateInspector/StateInspector"
+import FloatingNavigator from "./components/FloatingNavigator/FloatingNavigator"
 import { Selector } from "./components/Selector/Selector"
 import { StateManager } from "./lib/StateManager"
 
@@ -26,7 +24,7 @@ import LightboxPageB from "./components/B/Lightbox/Lightbox"
 
 const App: React.FC = () => {
   const stateManagerRef = useRef(new StateManager())
-  const [_, forceUpdate] = useState(0) // Used to trigger re-render
+  const [_, forceUpdate] = useState(0)
 
   const handleSelectKey = (key: StateKey) => {
     stateManagerRef.current.setKey(key)
@@ -41,11 +39,11 @@ const App: React.FC = () => {
   const { currentKey, currentPage } = stateManagerRef.current.getState()
   const pages = stateManagerRef.current.getAvailablePages()
 
-  if (!currentKey || !currentPage) {
-    return <Selector selectedKey={null} onSelect={handleSelectKey} />
-  }
-
   const renderPage = () => {
+    if (currentPage === "selector") {
+      return <Selector selectedKey={null} onSelect={handleSelectKey} />
+    }
+
     if (currentKey === "A") {
       switch (currentPage) {
         case "Log In Page":
@@ -93,11 +91,11 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Selector selectedKey={currentKey} onSelect={handleSelectKey} />
+      {renderPage()}
 
-      <StateInspector currentKey={currentKey} currentPage={currentPage} />
-
-      <div>{renderPage()}</div>
+      {currentPage !== "selector" && currentKey && (
+        <FloatingNavigator currentKey={currentKey} currentPage={currentPage} />
+      )}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 // src/components/FloatingNavigator.tsx
 import React from "react"
-import { states } from "../data/states"
-import type { StateKey, PageName } from "../data/states"
+import { states } from "./../../data/states"
+import { type StateKey, type PageName } from "./../../data/states"
 
 interface FloatingNavigatorProps {
   currentKey: StateKey

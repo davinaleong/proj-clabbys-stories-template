@@ -1,21 +1,19 @@
+// lib/stateManager.ts
 import { states } from "../data/states"
-import { type StateKey, type PageName } from "../data/states"
+import type { StateKey, PageName, AppScreen } from "../data/states"
 
 export interface AppState {
-  currentKey: StateKey
-  currentPage: PageName
+  currentKey: StateKey | null
+  currentPage: AppScreen
 }
 
 export class StateManager {
   private state: AppState
 
-  constructor(
-    initialKey: StateKey = "A",
-    initialPage: PageName = "Log In Page"
-  ) {
+  constructor() {
     this.state = {
-      currentKey: initialKey,
-      currentPage: initialPage,
+      currentKey: null,
+      currentPage: "selector",
     }
   }
 
@@ -27,21 +25,34 @@ export class StateManager {
     if (!states.selector.includes(newKey)) {
       throw new Error(`Invalid key: ${newKey}`)
     }
+
     this.state.currentKey = newKey
-    this.state.currentPage = states[newKey][0] // default to first page
+    this.state.currentPage = states[newKey][0] // Start at the first page
   }
 
   setPage(newPage: PageName): void {
+    if (!this.state.currentKey) {
+      throw new Error("Cannot set page before selecting a state key.")
+    }
+
     const pages = states[this.state.currentKey]
     if (!pages.includes(newPage)) {
       throw new Error(
-        `Page "${newPage}" is not valid for state "${this.state.currentKey}"`
+        `Invalid page "${newPage}" for state "${this.state.currentKey}"`
       )
     }
+
     this.state.currentPage = newPage
   }
 
   getAvailablePages(): PageName[] {
-    return states[this.state.currentKey]
+    return this.state.currentKey ? states[this.state.currentKey] : []
+  }
+
+  reset(): void {
+    this.state = {
+      currentKey: null,
+      currentPage: "selector",
+    }
   }
 }

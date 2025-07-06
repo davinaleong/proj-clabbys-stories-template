@@ -1,7 +1,7 @@
-// Define possible state keys
+// data/states.ts
+
 export type StateKey = "A" | "B"
 
-// Define valid page names
 export type PageName =
   | "Log In Page"
   | "Email Verification"
@@ -11,7 +11,9 @@ export type PageName =
   | "Gallery Page"
   | "Lightbox Page"
 
-// Map of available states for each key
+// Special app screen (adds 'selector' to pages)
+export type AppScreen = PageName | "selector"
+
 export interface StatesMap {
   selector: StateKey[]
   A: PageName[]
