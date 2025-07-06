@@ -1,13 +1,17 @@
 // src/components/FloatingNavigator.tsx
 import React from "react"
 import { states } from "./../../data/states"
-import { type StateKey, type PageName } from "./../../data/states"
+import {
+  type StateKey,
+  type PageName,
+  type AppScreen,
+} from "./../../data/states"
 
 interface FloatingNavigatorProps {
   currentKey: StateKey
   currentPage: PageName
   onSelectKey: (key: StateKey) => void
-  onSelectPage: (page: PageName) => void
+  onSelectPage: (page: AppScreen) => void
 }
 
 const FloatingNavigator: React.FC<FloatingNavigatorProps> = ({
@@ -20,6 +24,14 @@ const FloatingNavigator: React.FC<FloatingNavigatorProps> = ({
 
   return (
     <div className="fixed bottom-4 right-4 z-50 bg-white shadow-lg rounded-lg p-4 border border-gray-200 w-[300px]">
+      {/* Go Back to Selector */}
+      <button
+        onClick={() => onSelectPage("selector")}
+        className="w-full mb-4 px-3 py-2 text-xs font-semibold text-purple-700 border border-purple-300 rounded hover:bg-purple-100 transition"
+      >
+        ← Back to Selector
+      </button>
+
       {/* Version Selector */}
       <h2 className="text-sm font-semibold text-gray-700 mb-1">Current Key:</h2>
       <div className="flex gap-2 mb-3">

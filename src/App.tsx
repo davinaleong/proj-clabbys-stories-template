@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react"
-import type { StateKey, PageName } from "./data/states"
+import type { StateKey, AppScreen } from "./data/states"
 import FloatingNavigator from "./components/FloatingNavigator/FloatingNavigator"
 import { Selector } from "./components/Selector/Selector"
 import { StateManager } from "./lib/StateManager"
@@ -31,8 +31,12 @@ const App: React.FC = () => {
     forceUpdate((n) => n + 1)
   }
 
-  const handleSelectPage = (page: PageName) => {
-    stateManagerRef.current.setPage(page)
+  const handleSelectPage = (page: AppScreen) => {
+    if (page === "selector") {
+      stateManagerRef.current.reset()
+    } else {
+      stateManagerRef.current.setPage(page)
+    }
     forceUpdate((n) => n + 1)
   }
 
