@@ -1,4 +1,5 @@
-import { StateKey, PageName, states } from "./states"
+import { states } from "./../data/states"
+import { type StateKey, type PageName } from "./../data/states"
 
 export interface AppState {
   currentKey: StateKey

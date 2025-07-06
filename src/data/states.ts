@@ -4,6 +4,8 @@ export type StateKey = "A" | "B"
 // Define valid page names
 export type PageName =
   | "Log In Page"
+  | "Email Verification"
+  | "Sample Email"
   | "PIN Page"
   | "Galleries Page"
   | "Gallery Page"
@@ -20,6 +22,8 @@ export const states: StatesMap = {
   selector: ["A", "B"],
   A: [
     "Log In Page",
+    "Email Verification",
+    "Sample Email",
     "PIN Page",
     "Galleries Page",
     "Gallery Page",
@@ -27,6 +31,8 @@ export const states: StatesMap = {
   ],
   B: [
     "Log In Page",
+    "Email Verification",
+    "Sample Email",
     "PIN Page",
     "Galleries Page",
     "Gallery Page",
