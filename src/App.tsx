@@ -1,26 +1,28 @@
 import React, { useState, useRef } from "react"
-import { Selector } from "./states/Selector/Selector"
 import { states } from "./data/states"
 import type { StateKey, PageName } from "./data/states"
+// import FloatingNavigator from "./components/FloatingNavigator/FloatingNavigator"
+import StateInspector from "./components/StateInspector/StateInspector"
+import { Selector } from "./components/Selector/Selector"
 import { StateManager } from "./lib/StateManager"
 
 // Components for state A
-import LoginPageA from "./states/A/Login/Login"
-import EmailVerificationA from "./states/A/EmailVerification/EmailVerification"
-import SampleEmailA from "./states/A/SampleEmail/SampleEmail"
-import PinPageA from "./states/A/Pin/Pin"
-import GalleriesPageA from "./states/A/Galleries/Galleries"
-import GalleryPageA from "./states/A/Gallery/Gallery"
-import LightboxPageA from "./states/A/Lightbox/Lightbox"
+import LoginPageA from "./components/A/Login/Login"
+import EmailVerificationA from "./components/A/EmailVerification/EmailVerification"
+import SampleEmailA from "./components/A/SampleEmail/SampleEmail"
+import PinPageA from "./components/A/Pin/Pin"
+import GalleriesPageA from "./components/A/Galleries/Galleries"
+import GalleryPageA from "./components/A/Gallery/Gallery"
+import LightboxPageA from "./components/A/Lightbox/Lightbox"
 
 // Components for state B
-import LoginPageB from "./states/B/Login/Login"
-import EmailVerificationB from "./states/B/EmailVerification/EmailVerification"
-import SampleEmailB from "./states/B/SampleEmail/SampleEmail"
-import PinPageB from "./states/B/Pin/Pin"
-import GalleriesPageB from "./states/B/Galleries/Galleries"
-import GalleryPageB from "./states/B/Gallery/Gallery"
-import LightboxPageB from "./states/B/Lightbox/Lightbox"
+import LoginPageB from "./components/B/Login/Login"
+import EmailVerificationB from "./components/B/EmailVerification/EmailVerification"
+import SampleEmailB from "./components/B/SampleEmail/SampleEmail"
+import PinPageB from "./components/B/Pin/Pin"
+import GalleriesPageB from "./components/B/Galleries/Galleries"
+import GalleryPageB from "./components/B/Gallery/Gallery"
+import LightboxPageB from "./components/B/Lightbox/Lightbox"
 
 const App: React.FC = () => {
   const stateManagerRef = useRef(new StateManager())
@@ -93,24 +95,7 @@ const App: React.FC = () => {
     <div>
       <Selector selectedKey={currentKey} onSelect={handleSelectKey} />
 
-      <hr />
-
-      <h2>Current Key: {currentKey}</h2>
-      <h3>Current Page: {currentPage}</h3>
-
-      <div className="flex flex-wrap gap-2">
-        {pages.map((page) => (
-          <button
-            key={page}
-            onClick={() => handleSelectPage(page)}
-            disabled={page === currentPage}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
-
-      <hr />
+      <StateInspector currentKey={currentKey} currentPage={currentPage} />
 
       <div>{renderPage()}</div>
     </div>

@@ -1,6 +1,6 @@
 // Selector.tsx
 import React from "react"
-import type { StateKey } from "./../../data/states"
+import type { StateKey } from "../../data/states"
 
 interface SelectorProps {
   selectedKey: StateKey | null
