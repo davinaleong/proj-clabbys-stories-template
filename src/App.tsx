@@ -37,7 +37,6 @@ const App: React.FC = () => {
   }
 
   const { currentKey, currentPage } = stateManagerRef.current.getState()
-  const pages = stateManagerRef.current.getAvailablePages()
 
   const renderPage = () => {
     if (currentPage === "selector") {
@@ -94,7 +93,12 @@ const App: React.FC = () => {
       {renderPage()}
 
       {currentPage !== "selector" && currentKey && (
-        <FloatingNavigator currentKey={currentKey} currentPage={currentPage} />
+        <FloatingNavigator
+          currentKey={currentKey}
+          currentPage={currentPage}
+          onSelectKey={handleSelectKey}
+          onSelectPage={handleSelectPage}
+        />
       )}
     </div>
   )
