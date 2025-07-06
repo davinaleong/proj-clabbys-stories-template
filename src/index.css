@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair", Georgia, "Times New Roman", Times, serif;
+  --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  --width-wrapper: theme("screens.lg");
+
+  --spacing-flow: theme("spacing.4");
+
+  --color-pastel-pink-50: #ffffff;
+  --color-pastel-pink-100: #fff6f6;
+  --color-pastel-pink-200: #ffebec;
+  --color-pastel-pink-300: #ffe0e1;
+  --color-pastel-pink-400: #ffd5d6;
+  --color-pastel-pink-500: #ffdbdc;
+  --color-pastel-pink-600: #e5c5c6;
+  --color-pastel-pink-700: #ccb0b1;
+  --color-pastel-pink-800: #b39a9b;
+  --color-pastel-pink-900: #998485;
+  --color-pastel-pink-950: #8c7475;
+
+  --color-carbon-blue-50: #383870;
+  --color-carbon-blue-100: #333366;
+  --color-carbon-blue-200: #2e2e5c;
+  --color-carbon-blue-300: #292952;
+  --color-carbon-blue-400: #242448;
+  --color-carbon-blue-500: #1c1c4a;
+  --color-carbon-blue-600: #191942;
+  --color-carbon-blue-700: #151538;
+  --color-carbon-blue-800: #11112e;
+  --color-carbon-blue-900: #0e0e24;
+  --color-carbon-blue-950: #0b0b1e;
+}
+
+button {
+  cursor: pointer;
+}
+
+.wrapper {
+  --_width-wrapper: var(--width-wrapper);
+
+  max-width: var(--_width-wrapper);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+.flow > * + * {
+  --_spacing-flow: var(--spacing-flow);
+
+  margin-block-start: var(--_spacing-flow);
+}
