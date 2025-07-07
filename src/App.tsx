@@ -40,6 +40,10 @@ const App: React.FC = () => {
     forceUpdate((n) => n + 1)
   }
 
+  const handleLoginSuccess = () => {
+    handleSelectPage("Email Verification")
+  }
+
   const { currentKey, currentPage } = stateManagerRef.current.getState()
 
   const renderPage = () => {
@@ -50,7 +54,7 @@ const App: React.FC = () => {
     if (currentKey === "A") {
       switch (currentPage) {
         case "Log In Page":
-          return <LoginPageA />
+          return <LoginPageA onLoginSuccess={handleLoginSuccess} />
         case "Email Verification":
           return <EmailVerificationA />
         case "Sample Email":
@@ -71,7 +75,7 @@ const App: React.FC = () => {
     if (currentKey === "B") {
       switch (currentPage) {
         case "Log In Page":
-          return <LoginPageB />
+          return <LoginPageB onLoginSuccess={handleLoginSuccess} />
         case "Email Verification":
           return <EmailVerificationB />
         case "Sample Email":

@@ -1,10 +1,31 @@
-import React from "react"
-import logo from "./../../../assets/images/logo-original.png" // Update if needed
+import React, { useState } from "react"
+import logo from "./../../../assets/images/logo-original.png"
 
-const LoginPage: React.FC = () => {
+interface LoginPageProps {
+  onLoginSuccess: () => void
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
+  const [email, setEmail] = useState("")
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    // Simple validation
+    const isValid = /\S+@\S+\.\S+/.test(email)
+    if (isValid) {
+      onLoginSuccess()
+    } else {
+      alert("Please enter a valid email.")
+    }
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-pastel-pink-500">
-      <div className="w-full max-w-xs sm:max-w-sm text-center px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-xs sm:max-w-sm text-center px-4"
+      >
         {/* Logo */}
         <div className="flex justify-center mb-4">
           <img src={logo} alt="App Logo" className="h-14" />
@@ -20,13 +41,17 @@ const LoginPage: React.FC = () => {
           type="email"
           placeholder="Email"
           className="w-full mb-4 px-4 py-2 border border-gray-300 rounded-sm bg-gray-100"
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         {/* Login Button */}
-        <button className="w-full bg-black text-white font-semibold py-2">
+        <button
+          type="submit"
+          className="w-full bg-black text-white font-semibold py-2"
+        >
           Log In
         </button>
-      </div>
+      </form>
     </div>
   )
 }
