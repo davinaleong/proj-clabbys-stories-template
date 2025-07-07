@@ -56,7 +56,12 @@ const App: React.FC = () => {
         case "Log In Page":
           return <LoginPageA onLoginSuccess={handleLoginSuccess} />
         case "Email Verification":
-          return <EmailVerificationA />
+          return (
+            <EmailVerificationA
+              onSuccess={() => handleSelectPage("Sample Email")}
+              onChangeEmail={() => handleSelectPage("Log In Page")}
+            />
+          )
         case "Sample Email":
           return <SampleEmailA />
         case "PIN Page":
@@ -77,7 +82,12 @@ const App: React.FC = () => {
         case "Log In Page":
           return <LoginPageB onLoginSuccess={handleLoginSuccess} />
         case "Email Verification":
-          return <EmailVerificationB />
+          return (
+            <EmailVerificationB
+              onSuccess={() => handleSelectPage("Sample Email")}
+              onChangeEmail={() => handleSelectPage("Log In Page")}
+            />
+          )
         case "Sample Email":
           return <SampleEmailB />
         case "PIN Page":

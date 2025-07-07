@@ -54,3 +54,13 @@ button {
 
   margin-block-start: var(--_spacing-flow);
 }
+
+.bg-striped {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.8) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
