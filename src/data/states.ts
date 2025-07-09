@@ -4,8 +4,8 @@ export type StateKey = "A" | "B"
 
 export type PageName =
   | "Log In Page"
-  | "Email Verification"
   | "Sample Email"
+  | "Email Verification"
   | "PIN Page"
   | "Galleries Page"
   | "Gallery Page"

@@ -63,7 +63,11 @@ const App: React.FC = () => {
             />
           )
         case "Sample Email":
-          return <SampleEmailA />
+          return (
+            <SampleEmailA
+              onVerifyLinkClick={() => handleSelectPage("PIN Page")}
+            />
+          )
         case "PIN Page":
           return <PinPageA />
         case "Galleries Page":
@@ -89,7 +93,11 @@ const App: React.FC = () => {
             />
           )
         case "Sample Email":
-          return <SampleEmailB />
+          return (
+            <SampleEmailB
+              onVerifyLinkClick={() => handleSelectPage("PIN Page")}
+            />
+          )
         case "PIN Page":
           return <PinPageB />
         case "Galleries Page":
