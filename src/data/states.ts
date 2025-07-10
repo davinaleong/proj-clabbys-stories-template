@@ -9,7 +9,6 @@ export type PageName =
   | "PIN Page"
   | "Galleries Page"
   | "Gallery Page"
-  | "Lightbox Page"
 
 // Special app screen (adds 'selector' to pages)
 export type AppScreen = PageName | "selector"
@@ -28,7 +27,6 @@ export const states: StatesMap = {
     "Email Verification",
     "Galleries Page",
     "Gallery Page",
-    "Lightbox Page",
   ],
   B: [
     "Log In Page",
@@ -36,6 +34,5 @@ export const states: StatesMap = {
     "Email Verification",
     "Galleries Page",
     "Gallery Page",
-    "Lightbox Page",
   ],
 }

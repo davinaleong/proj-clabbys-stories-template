@@ -10,7 +10,6 @@ import EmailVerificationA from "./components/A/EmailVerification/EmailVerificati
 import SampleEmailA from "./components/A/SampleEmail/SampleEmail"
 import GalleriesPageA from "./components/A/Galleries/Galleries"
 import GalleryPageA from "./components/A/Gallery/Gallery"
-import LightboxPageA from "./components/A/Lightbox/Lightbox"
 
 // Components for state B
 import LoginPageB from "./components/B/Login/Login"
@@ -18,7 +17,6 @@ import EmailVerificationB from "./components/B/EmailVerification/EmailVerificati
 import SampleEmailB from "./components/B/SampleEmail/SampleEmail"
 import GalleriesPageB from "./components/B/Galleries/Galleries"
 import GalleryPageB from "./components/B/Gallery/Gallery"
-import LightboxPageB from "./components/B/Lightbox/Lightbox"
 
 const App: React.FC = () => {
   const stateManagerRef = useRef(new StateManager())
@@ -74,8 +72,6 @@ const App: React.FC = () => {
           )
         case "Gallery Page":
           return <GalleryPageA />
-        case "Lightbox Page":
-          return <LightboxPageA />
         default:
           return <p>Page not found.</p>
       }
@@ -107,8 +103,6 @@ const App: React.FC = () => {
           )
         case "Gallery Page":
           return <GalleryPageB />
-        case "Lightbox Page":
-          return <LightboxPageB />
         default:
           return <p>Page not found.</p>
       }

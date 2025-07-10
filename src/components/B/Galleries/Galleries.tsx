@@ -1,5 +1,5 @@
 import React from "react"
-import GalleryCard from "./../../GalleryCard"
+import GalleryCard from "../../GalleryCard/GalleryCard"
 
 interface GalleriesPageProps {
   onOpenGallery: () => void

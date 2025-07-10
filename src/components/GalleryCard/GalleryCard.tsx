@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
-import img0516 from "./../assets/images/IMG_0516.jpg"
-import img0570 from "./../assets/images/IMG_0570.jpg"
-import img0592 from "./../assets/images/IMG_0592.jpg"
-import img0597 from "./../assets/images/IMG_0597.jpg"
+import img0516 from "./../../assets/images/IMG_0516.jpg"
+import img0570 from "./../../assets/images/IMG_0570.jpg"
+import img0592 from "./../../assets/images/IMG_0592.jpg"
+import img0597 from "./../../assets/images/IMG_0597.jpg"
 
 interface GalleryCardProps {
   onDoubleClick?: () => void
