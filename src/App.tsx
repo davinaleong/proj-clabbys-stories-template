@@ -8,7 +8,6 @@ import { StateManager } from "./lib/StateManager"
 import LoginPageA from "./components/A/Login/Login"
 import EmailVerificationA from "./components/A/EmailVerification/EmailVerification"
 import SampleEmailA from "./components/A/SampleEmail/SampleEmail"
-import PinPageA from "./components/A/Pin/Pin"
 import GalleriesPageA from "./components/A/Galleries/Galleries"
 import GalleryPageA from "./components/A/Gallery/Gallery"
 import LightboxPageA from "./components/A/Lightbox/Lightbox"
@@ -17,7 +16,6 @@ import LightboxPageA from "./components/A/Lightbox/Lightbox"
 import LoginPageB from "./components/B/Login/Login"
 import EmailVerificationB from "./components/B/EmailVerification/EmailVerification"
 import SampleEmailB from "./components/B/SampleEmail/SampleEmail"
-import PinPageB from "./components/B/Pin/Pin"
 import GalleriesPageB from "./components/B/Galleries/Galleries"
 import GalleryPageB from "./components/B/Gallery/Gallery"
 import LightboxPageB from "./components/B/Lightbox/Lightbox"
@@ -41,7 +39,7 @@ const App: React.FC = () => {
   }
 
   const handleLoginSuccess = () => {
-    handleSelectPage("Email Verification")
+    handleSelectPage("Sample Email")
   }
 
   const { currentKey, currentPage } = stateManagerRef.current.getState()
@@ -55,6 +53,12 @@ const App: React.FC = () => {
       switch (currentPage) {
         case "Log In Page":
           return <LoginPageA onLoginSuccess={handleLoginSuccess} />
+        case "Sample Email":
+          return (
+            <SampleEmailA
+              onVerifyLinkClick={() => handleSelectPage("Galleries Page")}
+            />
+          )
         case "Email Verification":
           return (
             <EmailVerificationA
@@ -62,14 +66,6 @@ const App: React.FC = () => {
               onChangeEmail={() => handleSelectPage("Log In Page")}
             />
           )
-        case "Sample Email":
-          return (
-            <SampleEmailA
-              onVerifyLinkClick={() => handleSelectPage("PIN Page")}
-            />
-          )
-        case "PIN Page":
-          return <PinPageA />
         case "Galleries Page":
           return <GalleriesPageA />
         case "Gallery Page":
@@ -85,6 +81,12 @@ const App: React.FC = () => {
       switch (currentPage) {
         case "Log In Page":
           return <LoginPageB onLoginSuccess={handleLoginSuccess} />
+        case "Sample Email":
+          return (
+            <SampleEmailB
+              onVerifyLinkClick={() => handleSelectPage("Galleries Page")}
+            />
+          )
         case "Email Verification":
           return (
             <EmailVerificationB
@@ -92,14 +94,7 @@ const App: React.FC = () => {
               onChangeEmail={() => handleSelectPage("Log In Page")}
             />
           )
-        case "Sample Email":
-          return (
-            <SampleEmailB
-              onVerifyLinkClick={() => handleSelectPage("PIN Page")}
-            />
-          )
-        case "PIN Page":
-          return <PinPageB />
+
         case "Galleries Page":
           return <GalleriesPageB />
         case "Gallery Page":
