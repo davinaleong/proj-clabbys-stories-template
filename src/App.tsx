@@ -67,7 +67,11 @@ const App: React.FC = () => {
             />
           )
         case "Galleries Page":
-          return <GalleriesPageA />
+          return (
+            <GalleriesPageA
+              onOpenGallery={() => handleSelectPage("Gallery Page")}
+            />
+          )
         case "Gallery Page":
           return <GalleryPageA />
         case "Lightbox Page":
@@ -96,7 +100,11 @@ const App: React.FC = () => {
           )
 
         case "Galleries Page":
-          return <GalleriesPageB />
+          return (
+            <GalleriesPageB
+              onOpenGallery={() => handleSelectPage("Gallery Page")}
+            />
+          )
         case "Gallery Page":
           return <GalleryPageB />
         case "Lightbox Page":
