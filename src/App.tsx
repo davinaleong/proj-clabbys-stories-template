@@ -20,7 +20,7 @@ import GalleryPageB from "./components/B/Gallery/Gallery"
 
 const App: React.FC = () => {
   const stateManagerRef = useRef(new StateManager())
-  const [_, forceUpdate] = useState(0)
+  const [, forceUpdate] = useState(0)
 
   const handleSelectKey = (key: StateKey) => {
     stateManagerRef.current.setKey(key)
