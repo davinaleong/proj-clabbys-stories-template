@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react"
 import type { StateKey, AppScreen } from "./data/states"
-import FloatingNavigator from "./components/FloatingNavigator/FloatingNavigator"
 import { Selector } from "./components/Selector/Selector"
 import { StateManager } from "./lib/StateManager"
+import StateInspector from "./components/StateInspector/StateInspector"
 
 // Components for state A
 import LoginPageA from "./components/A/Login/Login"
@@ -94,7 +94,6 @@ const App: React.FC = () => {
               onChangeEmail={() => handleSelectPage("Log In Page")}
             />
           )
-
         case "Galleries Page":
           return (
             <GalleriesPageB
@@ -116,12 +115,7 @@ const App: React.FC = () => {
       {renderPage()}
 
       {currentPage !== "selector" && currentKey && (
-        <FloatingNavigator
-          currentKey={currentKey}
-          currentPage={currentPage}
-          onSelectKey={handleSelectKey}
-          onSelectPage={handleSelectPage}
-        />
+        <StateInspector currentKey={currentKey} currentPage={currentPage} />
       )}
     </div>
   )

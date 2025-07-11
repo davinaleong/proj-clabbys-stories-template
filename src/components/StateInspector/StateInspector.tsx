@@ -1,76 +1,46 @@
-// src/components/FloatingNavigator.tsx
-import React from "react"
-import { states } from "./../../data/states"
+// src/components/StateInspector/StateInspector.tsx
+import React, { useState } from "react"
 import type { StateKey, AppScreen } from "./../../data/states"
 
-interface FloatingNavigatorProps {
+interface StateInspectorProps {
   currentKey: StateKey
   currentPage: AppScreen
-  onSelectKey: (key: StateKey) => void
-  onSelectPage: (page: AppScreen) => void
 }
 
-const FloatingNavigator: React.FC<FloatingNavigatorProps> = ({
+const StateInspector: React.FC<StateInspectorProps> = ({
   currentKey,
   currentPage,
-  onSelectKey,
-  onSelectPage,
 }) => {
-  const pages = states[currentKey]
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 bg-white shadow-lg rounded-lg p-4 border border-gray-200 w-[300px]">
-      {/* Go Back to Selector */}
+    <div className="fixed bottom-4 right-4 z-50 w-[300px]">
       <button
-        onClick={() => onSelectPage("selector")}
-        className="w-full mb-4 px-3 py-2 text-xs font-semibold text-purple-700 border border-purple-300 rounded hover:bg-purple-100 transition"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-3 py-2 text-xs font-semibold text-white bg-purple-700 rounded-t hover:bg-purple-700 transition"
       >
-        ← Back to Selector
+        {isOpen ? "Hide State Inspector ▲" : "Show State Inspector ▼"}
       </button>
 
-      {/* Key Selector */}
-      <h2 className="text-sm font-semibold text-gray-700 mb-1">Current Key:</h2>
-      <div className="flex gap-2 mb-3">
-        {states.selector.map((key) => (
-          <button
-            key={key}
-            onClick={() => onSelectKey(key)}
-            disabled={key === currentKey}
-            className={`px-3 py-1 text-xs rounded border transition-all ${
-              key === currentKey
-                ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                : "bg-purple-500 text-white hover:bg-purple-600"
-            }`}
-          >
-            {key}
-          </button>
-        ))}
-      </div>
+      {isOpen && (
+        <div className="bg-white shadow-md rounded-b-lg p-4 border border-t-0 border-gray-200">
+          <h2 className="text-sm font-semibold text-gray-700 mb-2">
+            State Inspector
+          </h2>
 
-      {/* Page Selector */}
-      <h3 className="text-sm font-semibold text-gray-700 mb-1">
-        Current Page:
-      </h3>
-      <p className="mb-2 text-md text-gray-800">{currentPage}</p>
+          <div className="mb-3">
+            <p className="text-xs text-gray-500 mb-1">Current State:</p>
+            <p className="font-mono text-sm text-purple-700">{currentKey}</p>
+          </div>
 
-      <div className="flex flex-wrap gap-2">
-        {pages.map((page) => (
-          <button
-            key={page}
-            onClick={() => onSelectPage(page)}
-            disabled={page === currentPage}
-            className={`px-2 py-1 text-xs rounded border transition-all ${
-              page === currentPage
-                ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                : "bg-blue-500 text-white hover:bg-blue-600"
-            }`}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
+          <div>
+            <p className="text-xs text-gray-500 mb-1">Current Page:</p>
+            <p className="font-mono text-sm text-blue-700">{currentPage}</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
-export default FloatingNavigator
+export default StateInspector
