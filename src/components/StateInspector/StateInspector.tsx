@@ -11,7 +11,7 @@ const StateInspector: React.FC<StateInspectorProps> = ({
   currentKey,
   currentPage,
 }) => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="fixed bottom-4 right-4 z-50 w-[300px]">
