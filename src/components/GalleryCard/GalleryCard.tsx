@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
-import img0516 from "./../../assets/images/IMG_0516.jpg"
-import img0570 from "./../../assets/images/IMG_0570.jpg"
-import img0592 from "./../../assets/images/IMG_0592.jpg"
-import img0597 from "./../../assets/images/IMG_0597.jpg"
+import imgA from "./../../assets/images/0002.jpg"
+import imgB from "./../../assets/images/0007.jpg"
+import imgC from "./../../assets/images/0008.jpg"
+import imgD from "./../../assets/images/0003.jpg"
 
 interface GalleryCardProps {
   onDoubleClick?: () => void
@@ -37,7 +37,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ onDoubleClick }) => {
         {/* Image 1: wide */}
         <div className="col-span-4 row-span-3">
           <img
-            src={img0516}
+            src={imgA}
             alt="GalleryCard Image 1"
             className="w-full h-full object-cover aspect-[1.618/1]"
           />
@@ -46,7 +46,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ onDoubleClick }) => {
         {/* Image 2: tall */}
         <div className="col-span-2 row-span-3">
           <img
-            src={img0597}
+            src={imgD}
             alt="GalleryCard Image 2"
             className="w-full h-full object-cover aspect-[1/1.618]"
           />
@@ -55,7 +55,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ onDoubleClick }) => {
         {/* Image 3: tall */}
         <div className="col-span-2 row-span-3">
           <img
-            src={img0570}
+            src={imgB}
             alt="GalleryCard Image 3"
             className="w-full h-full object-cover aspect-[1/1.618]"
           />
@@ -64,7 +64,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ onDoubleClick }) => {
         {/* Image 4: wide */}
         <div className="col-span-4 row-span-3">
           <img
-            src={img0592}
+            src={imgC}
             alt="GalleryCard Image 4"
             className="w-full h-full object-cover aspect-[1.618/1]"
           />
