@@ -5,9 +5,11 @@ import type { StateKey, AppScreen } from "./../../data/states"
 interface StateInspectorProps {
   currentKey: StateKey
   currentPage: AppScreen
+  onBackToSelector: () => void
 }
 
 const StateInspector: React.FC<StateInspectorProps> = ({
+  onBackToSelector,
   currentKey,
   currentPage,
 }) => {
@@ -20,6 +22,13 @@ const StateInspector: React.FC<StateInspectorProps> = ({
         className="w-full px-3 py-2 text-xs font-semibold text-white bg-purple-700 rounded-t hover:bg-purple-700 transition"
       >
         {isOpen ? "Hide State Inspector ▲" : "Show State Inspector ▼"}
+      </button>
+
+      <button
+        onClick={onBackToSelector}
+        className="mt-4 w-full px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded hover:bg-gray-700 transition"
+      >
+        Back to Selector
       </button>
 
       {isOpen && (

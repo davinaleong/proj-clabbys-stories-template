@@ -115,7 +115,11 @@ const App: React.FC = () => {
       {renderPage()}
 
       {currentPage !== "selector" && currentKey && (
-        <StateInspector currentKey={currentKey} currentPage={currentPage} />
+        <StateInspector
+          currentKey={currentKey}
+          currentPage={currentPage}
+          onBackToSelector={() => handleSelectPage("selector")}
+        />
       )}
     </div>
   )
